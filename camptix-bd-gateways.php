@@ -42,6 +42,11 @@ class CampTix_BD_Gateways {
      * @return void
      */
     public function includes() {
+
+        if ( ! class_exists( 'CampTix_Payment_Method' ) ) {
+            return;
+        }
+
         require_once __DIR__ . '/includes/class-phone-field.php';
         require_once __DIR__ . '/includes/gateway/class-gateway-aamarpay.php';
     }
