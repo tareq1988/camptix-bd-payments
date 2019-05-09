@@ -9,51 +9,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Phone_Field {
 
     /**
-     * Instance.
-     *
-     * @var
-     */
-    static private $instance;
-
-    /**
-     * Singleton pattern.
-     *
-     * @since
-     * @access private
+     * Constructor
      */
     public function __construct() {
         $this->setup_hooks();
     }
 
     /**
-     * Get instance.
-     *
-     * @since
-     * @return static
-     */
-    static function get_instance() {
-        if ( null === static::$instance ) {
-            self::$instance = new static();
-        }
-
-        return self::$instance;
-    }
-
-    /**
-     * Setup
-     *
-     * @since  1.0
-     * @access public
-     */
-    public function setup() {
-        $this->setup_hooks();
-    }
-
-    /**
      * Setup hooks
-     *
-     * @since  1.0
-     * @access private
      */
     private function setup_hooks() {
         // Add, save and show extra fields.
@@ -70,9 +33,6 @@ class Phone_Field {
 
     /**
      * Add phone field
-     *
-     * @since  1.0
-     * @access public
      *
      * @param $form_data
      * @param $current_count
@@ -100,9 +60,6 @@ class Phone_Field {
     /**
      * Add extra attendee information
      *
-     * @since  1.0
-     * @access public
-     *
      * @param $attendee
      * @param $attendee_info
      * @param $current_count
@@ -122,9 +79,6 @@ class Phone_Field {
     /**
      * Save extra attendee information
      *
-     * @since  1.0
-     * @access public
-     *
      * @param $attendee_id
      * @param $attendee
      */
@@ -137,9 +91,6 @@ class Phone_Field {
 
     /**
      * Show extra attendee information
-     *
-     * @since 1.0
-     * access public
      *
      * @param $rows
      * @param $attendee
@@ -169,18 +120,17 @@ class Phone_Field {
      * @return array
      */
     public function add_fields_edit_attendee_info( $attendee ) {
-        ob_start();
         ?>
         <tr>
             <td class="tix-required tix-left">
                 <?php esc_html_e( 'Phone Number', 'campt-indian-payment-gateway' ); ?>
-                <span class="tix-required-star">*</span></td>
+                <span class="tix-required-star">*</span>
+            </td>
             <td class="tix-right">
                 <input name="tix_ticket_info[phone]" type="text" value="<?php echo esc_attr( get_post_meta( $attendee->ID, 'tix_phone', true ) ); ?>"/>
             </td>
         </tr>
         <?php
-        echo ob_get_clean();
     }
 
 
@@ -211,9 +161,6 @@ class Phone_Field {
     /**
      * Save edited attendee information
      *
-     * @since 1.0
-     * access public
-     *
      * @param $new_ticket_info
      * @param $attendee
      *
@@ -230,9 +177,6 @@ class Phone_Field {
     /**
      * Add column to export extra attendee information
      *
-     * @since 1.0
-     * access public
-     *
      * @param array $extra_columns
      *
      * @return array
@@ -245,9 +189,6 @@ class Phone_Field {
 
     /**
      * Add column to export extra attendee information
-     *
-     * @since 1.0
-     * access public
      *
      * @param $value
      * @param $column_name

@@ -1,6 +1,11 @@
 <?php
 namespace CamptixBD\Gateway;
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 /**
  * AamarPay gateway
  */
@@ -20,9 +25,8 @@ class AamarPay extends \CampTix_Payment_Method {
 
         if ( $this->gateway_enabled() ) {
             add_filter( 'camptix_form_register_complete_attendee_object', [ $this, 'add_attendee_info' ], 10, 3 );
+            add_action( 'template_redirect', [ $this, 'template_redirect' ] );
         }
-
-        add_action( 'template_redirect', [ $this, 'template_redirect' ] );
     }
 
     /**
@@ -67,10 +71,8 @@ class AamarPay extends \CampTix_Payment_Method {
             wp_die( __( 'The selected currency is not supported by this payment method.', 'camptix-bd-payments' ) );
         }
 
-        $url = $this->options['sandbox'] ? 'http://sandbox.aamarpay.com' : 'http://secure.aamarpay.com';
+        $url   = $this->options['sandbox'] ? 'http://sandbox.aamarpay.com' : 'http://secure.aamarpay.com';
         $order = $this->get_order( $payment_token );
-
-        // var_dump( $order ); die();
 
         $return_url = add_query_arg( array(
             'tix_action'         => 'payment_return',
@@ -107,11 +109,7 @@ class AamarPay extends \CampTix_Payment_Method {
         foreach ( $attendees as $attendee ) {
             $email = $attendee->tix_email;
             $name  = $attendee->tix_first_name . ' ' . $attendee->tix_last_name;
-            // var_dump( $attendee );
         }
-        // die();
-
-        // var_dump( $email, $name ); die();
 
         $args = [
             'store_id'      => $this->options['merchant_id'],
@@ -129,15 +127,9 @@ class AamarPay extends \CampTix_Payment_Method {
             'cus_phone'     => get_post_meta( $order['attendee_id'], 'tix_phone', true ),
         ];
 
-        $params = [
+        $response = wp_remote_post( $url . '/request.php', [
             'body' => $args
-        ];
-
-        // var_dump( $url, $params );
-
-        $response = wp_remote_post( $url . '/request.php', $params );
-
-        // var_dump( $response );
+        ] );
 
         if ( ! is_wp_error( $response ) ) {
             $body = json_decode( wp_remote_retrieve_body( $response ) );
@@ -150,7 +142,6 @@ class AamarPay extends \CampTix_Payment_Method {
             return;
         }
 
-        // var_dump( $url, $payment_token, $order ); die();
         return;
     }
 
