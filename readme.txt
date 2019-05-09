@@ -3,7 +3,7 @@ Contributors: tareq1988
 Donate link: https://tareq.co/donate/
 Tags: camptix, camptix payment, ticketing, payment gateways
 Requires at least: 4.0
-Tested up to: 4.8
+Tested up to: 5.2
 Stable tag: trunk
 Requires PHP: 5.6
 License: GPLv2 or later
@@ -27,8 +27,7 @@ e.g.
 
 1. Upload the plugin files to the `/wp-content/plugins/camptix-bd-payments` directory, or install the plugin through the WordPress plugins screen directly.
 1. Activate the plugin through the 'Plugins' screen in WordPress
-1. Use the Settings->Plugin Name screen to configure the plugin
-1. (Make your instructions match the desired user flow for activating and installing your plugin. Include any steps that might be needed for explanatory purposes)
+1. Use the Camptix -> Setup screen to configure the plugin
 
 == Frequently Asked Questions ==
 
@@ -44,7 +43,7 @@ Nothing here
 
 = v1.0 =
 
-Initial Release
+ * Initial Release
 
 == Upgrade Notice ==
 

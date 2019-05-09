@@ -240,6 +240,29 @@ class AamarPay extends \CampTix_Payment_Method {
     }
 
     /**
+     * Cancel the payment
+     *
+     * @return void
+     */
+    public function payment_cancel() {
+        global $camptix;
+
+        $payment_token = isset( $_REQUEST['tix_payment_token'] ) ? trim( $_REQUEST['tix_payment_token'] ) : '';
+
+        if ( ! $payment_token ) {
+            wp_die( 'empty token' );
+        }
+
+        $order = $this->get_order( $payment_token );
+
+        if ( ! $order ) {
+            wp_die( 'could not find order' );
+        }
+
+        return $camptix->payment_result( $payment_token, \CampTix_Plugin::PAYMENT_STATUS_CANCELLED );
+    }
+
+    /**
      * Verify the transaction
      *
      * @param  string $payment_token

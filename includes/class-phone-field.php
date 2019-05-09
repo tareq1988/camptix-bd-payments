@@ -44,7 +44,7 @@ class Phone_Field {
         ?>
         <tr class="tix-row-phone">
             <td class="tix-required tix-left">
-                <?php esc_html_e( 'Phone Number', 'campt-indian-payment-gateway' ); ?>
+                <?php esc_html_e( 'Phone Number', 'camptix-bd-payments' ); ?>
                 <span class="tix-required-star">*</span>
             </td>
             <?php $value = isset( $form_data['tix_attendee_info'][ $current_count ]['phone'] ) ? $form_data['tix_attendee_info'][ $current_count ]['phone'] : ''; ?>
@@ -101,7 +101,7 @@ class Phone_Field {
         // Phone.
         if ( $attendee_phone = get_post_meta( $attendee->ID, 'tix_phone', true ) ) {
             $rows[] = array(
-                __( 'Phone Number', 'campt-indian-payment-gateway' ),
+                __( 'Phone Number', 'camptix-bd-payments' ),
                 $attendee_phone,
             );
         }
@@ -123,7 +123,7 @@ class Phone_Field {
         ?>
         <tr>
             <td class="tix-required tix-left">
-                <?php esc_html_e( 'Phone Number', 'campt-indian-payment-gateway' ); ?>
+                <?php esc_html_e( 'Phone Number', 'camptix-bd-payments' ); ?>
                 <span class="tix-required-star">*</span>
             </td>
             <td class="tix-right">
@@ -183,7 +183,7 @@ class Phone_Field {
      */
     public function export_attendee_data_column( $extra_columns ) {
         return array(
-            'phone' => __( 'Phone Number', 'campt-indian-payment-gateway' ),
+            'phone' => __( 'Phone Number', 'camptix-bd-payments' ),
         );
     }
 
