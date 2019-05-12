@@ -68,7 +68,7 @@ class AamarPay extends \CampTix_Payment_Method {
         }
 
         if ( ! in_array( $this->camptix_options['currency'], $this->supported_currencies ) ) {
-            wp_die( __( 'The selected currency is not supported by this payment method.', 'camptix-bd-payments' ) );
+            wp_die( __( 'The selected currency is not supported by this payment method.', 'bd-payments-camptix' ) );
         }
 
         $url   = $this->options['sandbox'] ? 'http://sandbox.aamarpay.com' : 'http://secure.aamarpay.com';
@@ -138,7 +138,7 @@ class AamarPay extends \CampTix_Payment_Method {
             exit;
         } else {
             $body = wp_remote_retrieve_body( $response );
-            echo __( 'Something went wrong', 'camptix-bd-payments' );
+            echo __( 'Something went wrong', 'bd-payments-camptix' );
             return;
         }
 
@@ -151,9 +151,9 @@ class AamarPay extends \CampTix_Payment_Method {
      * @return void
      */
     function payment_settings_fields() {
-        $this->add_settings_field_helper( 'merchant_id', __( 'Merchant ID', 'camptix-bd-payments' ), [ $this, 'field_text' ] );
-        $this->add_settings_field_helper( 'signature_key', __( 'aamarPay Signature Key', 'camptix-bd-payments' ), [ $this, 'field_text' ] );
-        $this->add_settings_field_helper( 'sandbox', __( 'Sandbox Mode',  'camptix-bd-payments' ), [ $this, 'field_yesno' ] );
+        $this->add_settings_field_helper( 'merchant_id', __( 'Merchant ID', 'bd-payments-camptix' ), [ $this, 'field_text' ] );
+        $this->add_settings_field_helper( 'signature_key', __( 'aamarPay Signature Key', 'bd-payments-camptix' ), [ $this, 'field_text' ] );
+        $this->add_settings_field_helper( 'sandbox', __( 'Sandbox Mode',  'bd-payments-camptix' ), [ $this, 'field_yesno' ] );
     }
 
     /**

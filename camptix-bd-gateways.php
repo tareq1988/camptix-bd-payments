@@ -8,7 +8,7 @@
  * Version: 1.0
  * License: GPL2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: camptix-bd-payments
+ * Text Domain: bd-payments-camptix
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -70,7 +70,7 @@ class CampTix_BD_Gateways {
      */
     public function add_currency( $currencies ) {
         $currencies['BDT'] = [
-            'label'         => __( 'Taka', 'camptix-bd-payments' ),
+            'label'         => __( 'Taka', 'bd-payments-camptix' ),
             'format'        => 'BDT %s',
             'decimal_point' => 2,
         ];
