@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/tareq1988/camptix-bd-payments
  * Author: Tareq Hasan
  * Author URI: https://tareq.co
- * Version: 1.0
+ * Version: 1.1
  * License: GPL2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: bd-payments-camptix
@@ -49,6 +49,7 @@ class CampTix_BD_Gateways {
 
         require_once __DIR__ . '/includes/class-phone-field.php';
         require_once __DIR__ . '/includes/gateway/class-gateway-aamarpay.php';
+        require_once __DIR__ . '/includes/gateway/class-gateway-sslcommerz.php';
     }
 
     /**
@@ -58,6 +59,7 @@ class CampTix_BD_Gateways {
      */
     public function load_addons() {
         camptix_register_addon( '\CamptixBD\Gateway\AamarPay' );
+        camptix_register_addon( '\CamptixBD\Gateway\SSLCommerz' );
         camptix_register_addon( '\CamptixBD\Phone_Field' );
     }
 
