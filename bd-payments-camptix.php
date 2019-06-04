@@ -49,6 +49,7 @@ class CampTix_BD_Gateways {
 
         require_once __DIR__ . '/includes/class-phone-field.php';
         require_once __DIR__ . '/includes/gateway/class-gateway-aamarpay.php';
+        require_once __DIR__ . '/includes/gateway/class-gateway-sslcommerz.php';
     }
 
     /**
@@ -58,6 +59,7 @@ class CampTix_BD_Gateways {
      */
     public function load_addons() {
         camptix_register_addon( '\CamptixBD\Gateway\AamarPay' );
+        camptix_register_addon( '\CamptixBD\Gateway\SSLCommerz' );
         camptix_register_addon( '\CamptixBD\Phone_Field' );
     }
 
