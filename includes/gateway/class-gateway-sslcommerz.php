@@ -68,7 +68,7 @@ class SSLCommerz extends \CampTix_Payment_Method {
 		}
 
 		if ( ! in_array( $this->camptix_options['currency'], $this->supported_currencies ) ) {
-			return $camptix->error( __( 'The selected currency is not supported by this payment method.', 'bd-payments-camptix' ) );
+			wp_die( __( 'The selected currency is not supported by this payment method.', 'bd-payments-camptix' ) );
 		}
 
 		$url   = $this->options['sandbox'] ? 'https://sandbox.sslcommerz.com' : 'https://securepay.sslcommerz.com';
