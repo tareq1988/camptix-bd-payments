@@ -112,9 +112,19 @@ class SSLCommerz extends \CampTix_Payment_Method {
 			]
 		);
 
-		foreach ( $attendees as $attendee ) {
-			$email = $attendee->tix_email;
-			$name  = $attendee->tix_first_name . ' ' . $attendee->tix_last_name;
+		// take the first attendee as the customer because
+		// we need the name and phone number for the gateway
+		$attendee = reset( $attendees );
+		$email = $attendee->tix_email;
+		$name  = $attendee->tix_first_name . ' ' . $attendee->tix_last_name;
+		$phone = $attendee->tix_phone;
+
+		// build the payment description wth sitename and
+		// ticket names with quantity
+		$description = get_bloginfo( 'description' ) . ' ' . __( 'ticket', 'bd-payments-camptix' );;
+
+		foreach ( $order['items'] as $ticket ) {
+			$description .= ' | ' . $ticket['name'] . ' x' . $ticket['quantity'];
 		}
 
 		$args = [
@@ -128,17 +138,15 @@ class SSLCommerz extends \CampTix_Payment_Method {
 			'total_amount' => $order['total'],
 			'currency'     => $this->camptix_options['currency'],
 			'store_passwd' => $this->options['store_password'],
-			'desc'         => 'Ticket',
+			'desc'         => $description,
 			'cus_name'     => $name,
 			'cus_email'    => $email,
-			'cus_phone'    => get_post_meta( $order['attendee_id'], 'tix_phone', true ),
+			'cus_phone'    => $phone,
 		];
 
 		$response = wp_remote_post( $url . '/gwprocess/v3/api.php', [
 			'body' => $args
 		] );
-
-		// var_dump( $response ); die();
 
 		if ( ! is_wp_error( $response ) ) {
 			$body = json_decode( wp_remote_retrieve_body( $response ), true );

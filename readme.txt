@@ -20,13 +20,8 @@ CampTix Bangladeshi Payment Gateway Solution for Camptix Plugin. Allow visitors 
 Only **BDT** currency is supported.
 
  * [aamarPay](https://www.aamarpay.com/)
- * [SSLCommerz](https://sslcommerz.com/)
 
 = About Gateways =
-
-**aamarPay**
-
-[aamarPay](https://www.aamarpay.com/) is an Online Payment Gateway & Merchant Service Provider of Bangladesh. Please contact them to obtain the credentials to make the gateway work. This payment gateway is based on the [documentation](https://www.aamarpay.com/developer/) of their official site.
 
 **SSLCommerz**
 
@@ -50,7 +45,7 @@ e.g.
 
 = Which payment gateway it supports =
 
-Right now it supports [aamarPay](https://www.aamarpay.com/) and [SSLCommerz](https://sslcommerz.com/) gateway.
+Right now it supports [SSLCommerz](https://sslcommerz.com/) gateway.
 
 = Which currencies does it support? =
 
