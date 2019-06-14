@@ -8,7 +8,6 @@ Right now it supports `BDT` currency via:
 
 Only **BDT** currency is supported.
 
- * [aamarPay](https://www.aamarpay.com/)
  * [SSLCommerz](https://sslcommerz.com/)
 
 Feel free to post your feature requests, issues and pull requests to [Camptix Bangladeshi Payments](https://github.com/tareq1988/camptix-bd-payments) on GitHub.

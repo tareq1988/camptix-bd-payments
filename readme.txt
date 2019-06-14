@@ -4,7 +4,7 @@ Donate link: https://tareq.co/donate/
 Tags: camptix, camptix payment, ticketing, payment gateways
 Requires at least: 4.0
 Tested up to: 5.2
-Stable tag: 1.1
+Stable tag: 1.2
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -20,13 +20,8 @@ CampTix Bangladeshi Payment Gateway Solution for Camptix Plugin. Allow visitors 
 Only **BDT** currency is supported.
 
  * [aamarPay](https://www.aamarpay.com/)
- * [SSLCommerz](https://sslcommerz.com/)
 
 = About Gateways =
-
-**aamarPay**
-
-[aamarPay](https://www.aamarpay.com/) is an Online Payment Gateway & Merchant Service Provider of Bangladesh. Please contact them to obtain the credentials to make the gateway work. This payment gateway is based on the [documentation](https://www.aamarpay.com/developer/) of their official site.
 
 **SSLCommerz**
 
@@ -50,7 +45,7 @@ e.g.
 
 = Which payment gateway it supports =
 
-Right now it supports [aamarPay](https://www.aamarpay.com/) and [SSLCommerz](https://sslcommerz.com/) gateway.
+Right now it supports [SSLCommerz](https://sslcommerz.com/) gateway.
 
 = Which currencies does it support? =
 
@@ -61,6 +56,12 @@ Right now it supports `BDT` currency only.
 Nothing here
 
 == Changelog ==
+
+= v1.2 (15th June, 2019) =
+
+ * Removed aamarPay gateway
+ * Convert spaces to tabs
+ * Fix the order customer name, email, phone and description field
 
 = v1.1 (5th June, 2019) =
 
