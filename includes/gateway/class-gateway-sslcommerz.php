@@ -68,7 +68,7 @@ class SSLCommerz extends \CampTix_Payment_Method {
 		}
 
 		if ( ! in_array( $this->camptix_options['currency'], $this->supported_currencies ) ) {
-			wp_die( __( 'The selected currency is not supported by this payment method.', 'bd-payments-camptix' ) );
+			return $camptix->error( __( 'The selected currency is not supported by this payment method.', 'bd-payments-camptix' ) );
 		}
 
 		$url   = $this->options['sandbox'] ? 'https://sandbox.sslcommerz.com' : 'https://securepay.sslcommerz.com';
@@ -119,9 +119,9 @@ class SSLCommerz extends \CampTix_Payment_Method {
 		$name  = $attendee->tix_first_name . ' ' . $attendee->tix_last_name;
 		$phone = $attendee->tix_phone;
 
-		// build the payment description wth sitename and
+		// build the payment description wth the event name and
 		// ticket names with quantity
-		$description = get_bloginfo( 'description' ) . ' ' . __( 'ticket', 'bd-payments-camptix' );;
+		$description = $camptix->email_template_shortcode_event_name([]);
 
 		foreach ( $order['items'] as $ticket ) {
 			$description .= ' | ' . $ticket['name'] . ' x' . $ticket['quantity'];
@@ -277,13 +277,13 @@ class SSLCommerz extends \CampTix_Payment_Method {
 		$camptix->log('Cancel token: ' . $payment_token );
 
 		if ( ! $payment_token ) {
-			wp_die( 'empty token' );
+			return $camptix->error( 'empty token' );
 		}
 
 		$order = $this->get_order( $payment_token );
 
 		if ( ! $order ) {
-			wp_die( 'could not find order' );
+			return $camptix->error( 'could not find order' );
 		}
 
 		return $camptix->payment_result( $payment_token, \CampTix_Plugin::PAYMENT_STATUS_CANCELLED );
@@ -302,13 +302,13 @@ class SSLCommerz extends \CampTix_Payment_Method {
 		$camptix->log('Fail token: ' . $payment_token );
 
 		if ( ! $payment_token ) {
-			wp_die( 'empty token' );
+			return $camptix->error( 'empty token' );
 		}
 
 		$order = $this->get_order( $payment_token );
 
 		if ( ! $order ) {
-			wp_die( 'could not find order' );
+			return $camptix->error( 'could not find order' );
 		}
 
 		return $camptix->payment_result( $payment_token, \CampTix_Plugin::PAYMENT_STATUS_FAILED );
