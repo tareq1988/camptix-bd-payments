@@ -4,7 +4,7 @@ Donate link: https://tareq.co/donate/
 Tags: camptix, camptix payment, ticketing, payment gateways
 Requires at least: 4.0
 Tested up to: 5.2
-Stable tag: 1.1
+Stable tag: 1.2
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -56,6 +56,12 @@ Right now it supports `BDT` currency only.
 Nothing here
 
 == Changelog ==
+
+= v1.2 (15th June, 2019) =
+
+ * Removed aamarPay gateway
+ * Convert spaces to tabs
+ * Fix the order customer name, email, phone and description field
 
 = v1.1 (5th June, 2019) =
 

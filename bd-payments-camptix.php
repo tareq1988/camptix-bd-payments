@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/tareq1988/camptix-bd-payments
  * Author: Tareq Hasan
  * Author URI: https://tareq.co
- * Version: 1.1
+ * Version: 1.2
  * License: GPL2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: bd-payments-camptix
